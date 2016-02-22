@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="drawing">
+  <canvas id="myCanvas" width="1280" height="636" style="border:3px solid #d3d3d3; position:relative;">wtf</canvas><br>
+  <button type="button" id="animate" style="width:1284px">Warning: Pressing this makes it go faster. Sometimes too fast.</button>
+</div>
+
+<script>
+  
+  var canvas = document.getElementById("myCanvas");
+  var ctx = canvas.getContext("2d");
+  ctx.fillStyle = "black";
+
+  var radius = 0;
+  var centerX = canvas.width / 2;
+  var centerY = canvas.height / 2;
+  var increasing = 0;
+
+  function drawC(){
+    window.requestAnimationFrame(drawC);
+    ctx.beginPath();
+    ctx.clearRect(0,0,1280,636);
+    ctx.arc(centerX,centerY,radius,0,2*Math.PI);
+    ctx.fill();
+    if (radius == 960){
+      increasing = 1;
+    }
+    if (radius == 0){
+      increasing = 0;
+    }
+    if (increasing == 0){
+      radius += 16;
+    }
+    if (increasing == 1){
+      radius -= 16;
+    }
+  }
+  document.getElementById('animate').addEventListener('click', function(){
+    drawC();
+  }, false);
+
+
+</script>
+
+</body>
+</html>
