@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="drawing">
+  <canvas id="myCanvas" width="500" height="500" style="border:3px solid #d3d3d3; position:relative;">wtf</canvas><br>
+  <button type="button" id="erase" style="width:504px">ERASE</button>
+</div>
+
+<script>
+  
+  var canvas = document.getElementById("myCanvas");
+  var ctx = canvas.getContext("2d");
+
+  var radius = 10;
+
+  var plop = function(e){
+    ctx.lineTo(e.clientX,e.clientY);
+    ctx.stroke();
+    ctx.closePath();
+    ctx.beginPath();
+    ctx.arc(e.clientX, e.clientY, radius, 0, Math.PI*2);
+    ctx.fill();
+    ctx.moveTo(e.clientX,e.clientY);
+  }
+
+  canvas.addEventListener('click', plop);
+  
+  document.getElementById('erase').addEventListener('click', function(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+  }, false);
+
+</script>
+
+</body>
+</html>
