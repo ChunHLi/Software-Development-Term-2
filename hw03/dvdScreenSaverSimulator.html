@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <style>
+      html, body {
+        width:  100%;
+        height: 100%;
+        margin: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="drawing">
+      <canvas id="myCanvas">oh<canvas><br>
+      <button type="button" id="screenSaverify">Activate the Torture</button>
+    </div>
+    <script>
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+      ctx.canvas.width = window.innerWidth;
+      ctx.canvas.height = window.innerHeight;
+      ctx.fillStyle = "black";
+      
+      var logoX = Math.random() * ctx.canvas.width;
+      var logoY = Math.random() * ctx.canvas.height;
+      var logoAngle = getRandomInt(0,4);
+      
+      function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
+
+      var logo = new Image();
+      logo.src = "DVD_logo.jpg";
+      
+      
+      function draw(){
+        window.requestAnimationFrame(draw);
+        ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
+        if (logoX == ctx.canvas.innerWidth - 300){
+          if (logoAngle == 0){
+            logoAngle = 1;
+          }
+          if (logoAngle == 3){
+          }
+        }
+      
+        if (logoAngle == 0){
+          logoX += 1;
+          logoY -= 1;
+        }
+        if (logoAngle == 1){
+          logoX -= 1;
+          logoY -= 1;
+        }
+        if (logoAngle == 2){
+          logoX -= 1;
+          logoY += 1;
+        }
+        if (logoAngle == 3){
+          logoX += 1;
+          logoY += 1;
+        }
+        ctx.drawImage(logo,logoX,logoY);
+      }
+
+      draw()
+      
+    </script>
+  </body>
+</html>
