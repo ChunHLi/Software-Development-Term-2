@@ -18,12 +18,12 @@
     <script>
       var canvas = document.getElementById("myCanvas");
       var ctx = canvas.getContext("2d");
-      ctx.canvas.width = window.innerWidth;
-      ctx.canvas.height = window.innerHeight;
+      ctx.canvas.width = window.innerWidth - 4;
+      ctx.canvas.height = window.innerHeight - 4;
       ctx.fillStyle = "black";
       
-      var logoX = Math.random() * ctx.canvas.width;
-      var logoY = Math.random() * ctx.canvas.height;
+      var logoX = Math.random() * (ctx.canvas.width/2);
+      var logoY = Math.random() * (ctx.canvas.height/2);
       var logoAngle = getRandomInt(0,4);
       
       function getRandomInt(min, max) {
@@ -35,16 +35,49 @@
       
       
       function draw(){
+				console.log(logoAngle);
         window.requestAnimationFrame(draw);
-        ctx.fillRect(0,0,window.innerWidth,window.innerHeight);
-        if (logoX == ctx.canvas.innerWidth - 300){
+				ctx.clearRect(0,0,window.innerWidth, window.innerHeight);
+        ctx.fillRect(2,2,window.innerWidth + 2,window.innerHeight + 2);
+
+
+        if (logoX >= (ctx.canvas.width - 282)){
           if (logoAngle == 0){
             logoAngle = 1;
           }
           if (logoAngle == 3){
+	    			logoAngle = 2;
           }
         }
+
+        if (logoX <= -20){
+					if (logoAngle == 1){
+						logoAngle = 0;
+					}
+					if (logoAngle == 2){
+						logoAngle = 3;
+					}
+				}
+
+				if (logoY >= (ctx.canvas.height - 160)){
+					if (logoAngle == 2){
+						logoAngle = 1;
+					}
+					if (logoAngle == 3){
+						logoAngle = 0;					
+					}					
+				}
+
+				if (logoY <= -44){
+					if (logoAngle == 0){
+						logoAngle = 3;
+					}
+					if (logoAngle == 1){
+						logoAngle = 2;
+					}
+				}
       
+
         if (logoAngle == 0){
           logoX += 1;
           logoY -= 1;
