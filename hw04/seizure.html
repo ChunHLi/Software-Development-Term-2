@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="drawing">
+  <svg id="mySVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="636"></svg>
+  <button type="button" id="animate" style="width:1284px" onclick="startAnimation();">Warning: Pressing this makes it go faster. Sometimes too fast.</button>
+</div>
+
+<script>
+  
+  var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  var CX = 640;
+  var CY = 318;
+  circle.setAttribute("cx", CX);
+  circle.setAttribute("cy", CY);
+  var radius = 0;
+  var Style = "stroke:#006600;stroke-width: 3;fill:#00cc00"; 
+  circle.setAttribute("style",Style);
+  var increasing = 0;
+  document.getElementById("mySVG").appendChild(circle);
+	
+  function drawC(){
+    if (radius >= 720){
+      increasing = 1;
+    }
+    if (radius <= 0){
+      increasing = 0;
+    }
+    if (increasing == 0){
+      radius += 16;
+    }
+    if (increasing == 1){
+      radius -= 16;
+    }
+    circle.setAttribute("r",radius);
+  }
+
+  function startAnimation(){
+    setInterval("drawC()", 20);
+  }
+
+
+</script>
+
+</body>
+</html>
