@@ -5,6 +5,8 @@
 <div id="drawing">
   <svg id="mySVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="636"></svg>
   <button type="button" id="animate" style="width:1284px" onclick="startAnimation();">Warning: Pressing this makes it go faster. Sometimes too fast.</button>
+  <button type="button" id="animate" style="width:1284px" onclick="stopAnimation();">Warning: Pressing this makes it lame.</button>
+  <button type="button" id="animate" style="width:1284px" onclick="resetAnimation();">Warning: Pressing this makes it travel back in time.</button>
 </div>
 
 <script>
@@ -36,8 +38,16 @@
     circle.setAttribute("r",radius);
   }
 
-  function startAnimation(){
+  var animation = function startAnimation(){
     setInterval("drawC()", 20);
+  }
+  
+  function stopAnimation(){
+    clearInterval(animation
+  }
+  
+  function resetAnimation(){
+    radius = 0;
   }
 
 
