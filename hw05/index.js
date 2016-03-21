@@ -62,9 +62,7 @@ var toggleParty = "1";
 
 var toggleParty = localStorage.getItem("toggleParty");
 
-$('<button>Test</button>').click(function () { alert('hi'); });
-
-function toggle() {
+toggle = function() {
 	if (toggleParty == "1"){
 		toggleParty = "2";
 	}
