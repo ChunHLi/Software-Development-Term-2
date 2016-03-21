@@ -63,11 +63,11 @@ var toggleParty = "1";
 var toggleParty = localStorage.getItem("toggleParty");
 
 function toggle() {
-	if (toggleParty == 1){
-		toggleParty = 2;
+	if (toggleParty == "1"){
+		toggleParty = "2";
 	}
 	else{
-		toggleParty = 1;
+		toggleParty = "1";
 	}
 	localStorage.setItem("toggleParty", toggleParty);
 	location.reload();
