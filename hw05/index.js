@@ -57,14 +57,12 @@ data = [["Alabama", 60, 50],
 ["Wisconsin", 96, 42],
 ["Wyoming", 18, 29]]
 
-document.getElementById("clickMe").onclick = toggle;
-
 occurred = ["Iowa","New Hampshire","Nevada","South Carolina","Alabama","Arkansas","Colorado","Georgia","Massachusetts","Minnesota","Oklahoma","Tennessee","Texas","Vermont","Virginia","American Samoa","Kansas","Louisiana","Nebraska","Maine","Michigan","Mississippi","Northern Marianas","Florida","Illinois","Missouri","North Carolina","Ohio"]
 var toggleParty = "1";
 
 var toggleParty = localStorage.getItem("toggleParty");
 
-toggle = function() {
+var toggle = function() {
 	if (toggleParty == "1"){
 		toggleParty = "2";
 	}
@@ -97,3 +95,5 @@ var setup = d3.select(".chart")
     .style("margin","1px")
     .style("padding","1px")
     .text(function(d) { return d[0] + ": "+ d[parseInt(toggleParty)]; });
+
+document.getElementById("clickMe").onclick = toggle;
