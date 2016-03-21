@@ -58,9 +58,13 @@ data = [["Alabama", 60, 50],
 ["Wyoming", 18, 29]]
 
 occurred = ["Iowa","New Hampshire","Nevada","South Carolina","Alabama","Arkansas","Colorado","Georgia","Massachusetts","Minnesota","Oklahoma","Tennessee","Texas","Vermont","Virginia","American Samoa","Kansas","Louisiana","Nebraska","Maine","Michigan","Mississippi","Northern Marianas","Florida","Illinois","Missouri","North Carolina","Ohio"]
-var toggleParty = "1";
 
-var toggleParty = localStorage.getItem("toggleParty");
+if (localStorage.getItem("toggleParty") == null){
+	var toggleParty = 1;
+}
+else{
+	var toggleParty = localStorage.getItem("toggleParty");
+}
 
 var toggle = function() {
 	if (toggleParty == "1"){
