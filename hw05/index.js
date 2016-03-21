@@ -66,17 +66,6 @@ else{
 	var toggleParty = localStorage.getItem("toggleParty");
 }
 
-var toggle = function() {
-	if (toggleParty == "1"){
-		toggleParty = "2";
-	}
-	else{
-		toggleParty = "1";
-	}
-	localStorage.setItem("toggleParty", toggleParty);
-	location.reload();
-}
-
 var setup = d3.select(".chart")
     .data(data)
     .enter()
@@ -100,4 +89,13 @@ var setup = d3.select(".chart")
     .style("padding","1px")
     .text(function(d) { return d[0] + ": "+ d[parseInt(toggleParty)]; });
 
-document.getElementById("clickMe").onclick = toggle;
+document.getElementById("clickMe").onclick = function() {
+	if (toggleParty == "1"){
+		toggleParty = "2";
+	}
+	else{
+		toggleParty = "1";
+	}
+	localStorage.setItem("toggleParty", toggleParty);
+	location.reload();
+}
