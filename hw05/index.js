@@ -57,6 +57,8 @@ data = [["Alabama", 60, 50],
 ["Wisconsin", 96, 42],
 ["Wyoming", 18, 29]]
 
+document.getElementById("clickMe").onclick = toggle;
+
 occurred = ["Iowa","New Hampshire","Nevada","South Carolina","Alabama","Arkansas","Colorado","Georgia","Massachusetts","Minnesota","Oklahoma","Tennessee","Texas","Vermont","Virginia","American Samoa","Kansas","Louisiana","Nebraska","Maine","Michigan","Mississippi","Northern Marianas","Florida","Illinois","Missouri","North Carolina","Ohio"]
 var toggleParty = "1";
 
