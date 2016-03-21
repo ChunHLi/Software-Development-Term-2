@@ -79,7 +79,7 @@ var setup = d3.select(".chart")
     .data(data)
     .enter()
     .append("div")
-    .style("width", function(d) { return (d[parseInt(toggleParty)] * 2.5 + "px"; })
+    .style("width", function(d) { return (d[parseInt(toggleParty)] * 2.5 + "px"); })
     .style("background-color", function(d) {
 	if(occurred.indexOf(d[0]) != -1){
 	    return "cyan";
