@@ -65,12 +65,15 @@ if (localStorage.getItem("toggleParty") == null){
 else{
 	var toggleParty = localStorage.getItem("toggleParty");
 }
+var x = d3.scale.linear()
+    .domain([0,58])
+    .range([0,100]);
 
 var setup = d3.select(".chart")
     .data(data)
     .enter()
     .append("div")
-    .style("width", function(d) { return (d[parseInt(toggleParty)] * 2.5 + "px"); })
+    .style("width", function(d) { return (x(d[parseInt(toggleParty)])  + "px"); })
     .style("background-color", function(d) {
 	if(occurred.indexOf(d[0]) != -1){
 	    return "cyan";
@@ -96,6 +99,32 @@ document.getElementById("clickMe").onclick = function() {
 	else{
 		toggleParty = "1";
 	}
-	localStorage.setItem("toggleParty", toggleParty);
-	location.reload();
+    setup.transition()
+    .style("width", function(d) { return (x(d[parseInt(toggleParty)]) + "px"); })
+    .style("background-color", function(d) {
+	console.log(setup.style(background-color).text());
+	if(setup.attr("background-color") == "red" || setup.attr("background-color") == "pink"){
+	    if(occurred.indexOf(d[0]) != -1){
+		return "cyan";
+	    }else{
+		return "blue";
+	    }
+	}else{
+	    if(occurred.indexOf(d[0]) != -1){
+		return "pink";
+	    }else{
+		return "red";
+	    }
+	}
+    })
+    .style("color", function(d) {
+	if(occurred.indexOf(d[0]) != -1){
+	    return "black";
+	}else{
+	    return "lightsteelblue";
+	}
+    })
+    .text(function(d) { return d[0] + ": "+ d[parseInt(toggleParty)]; })
+    .duration(1000)
+    .delay(100);
 }

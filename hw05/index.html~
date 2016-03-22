@@ -5,7 +5,7 @@
   </head>
   <body>
     <h1>Democratic delegates at stake: 4765 | Republican delegates at stake: 2472</h1>
-    <button id="clickMe">Toggle</button>
+    <button id="clickme">Toggle</button>
     <br>
   </body>
   <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
